@@ -2,11 +2,6 @@
 const fs = require("fs")
 const chalk = require("chalk")
 
-//getNotes function
-
-/*const getNote =()=>{
-	return "your notes"
-}*/
 
 //adding new note
 
