@@ -2,7 +2,11 @@ const request = require("request")
 const geocode = require("./utils/geocode")
 const forecast = require("./utils/forecast") 
 
-geocode(process.argv[2],(error,data)=>{
+const address = process.argv[2]
+if(!adress){
+	console.log("Enter the address.")
+}else{
+	geocode(address,(error,data)=>{
 	if(error){
 		console.log(error)
 	}else{
@@ -16,5 +20,13 @@ geocode(process.argv[2],(error,data)=>{
 		})
 	}
 })
+
+
+}
+
+
+
+
+
 
 
