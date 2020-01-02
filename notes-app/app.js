@@ -42,7 +42,7 @@ yargs.command({
 yargs.command({
 	command:"list",
 	describe:"listing all note",
-	handler:()=>console.log("list of notes")
+	handler:()=>Notes.listNotes()
 })
 
 // read the specified note 

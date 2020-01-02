@@ -60,11 +60,20 @@ const saveNotes = (notes)=>{
 	fs.writeFileSync("Notes.json", dataJSON)
 }
 
+// lising the notes 
+
+const listNotes = ()=>{
+	console.log(chalk.green("Your notes"));
+	const notes = lodeNotes()
+	//console.log(notes);
+	notes.forEach((note)=>console.log(note.title))
+}
 
 //exporting getnotes and addNote function
 
 module.exports = {
 	getNotes : getNotes,
 	addNote : addNote,
-	removeNote : removeNote
+	removeNote : removeNote,
+	listNotes : listNotes
 }
