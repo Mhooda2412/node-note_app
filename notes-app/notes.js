@@ -4,16 +4,16 @@ const chalk = require("chalk")
 
 //getNotes function
 
-const getNotes =()=>{
+/*const getNote =()=>{
 	return "your notes"
-}
+}*/
 
 //adding new note
 
 const addNote =(title , body)=>{
 	const notes = lodeNotes()
-	const dublicateNotes = notes.filter((note)=> note.title === title)
-	if(dublicateNotes.length===0){
+	const dublicateNote = notes.find((note)=>note.title === title)
+	if(!dublicateNote){
 		notes.push({
 			title: title,
 			body:body
@@ -38,6 +38,27 @@ const removeNote = (title)=>{
 	}
 }
 
+// lising the notes 
+
+const listNotes = ()=>{
+	console.log(chalk.green("Your notes"));
+	const notes = lodeNotes()
+	notes.forEach((note)=>console.log(note.title))
+}
+
+//read note
+const readNote = (title)=>{
+	try{
+		const notes = lodeNotes()
+		const readnote = notes.find((note)=>note.title === title)
+		console.log(chalk.bold.green.inverse(readnote.title));
+		console.log(readnote.body)
+	}catch(e){
+		console.log(chalk.bold.red.inverse("note with the given title is not found"))
+	}
+	
+} 
+
 //lode the alreade saved notes
 
 const lodeNotes = ()=>{
@@ -60,20 +81,13 @@ const saveNotes = (notes)=>{
 	fs.writeFileSync("Notes.json", dataJSON)
 }
 
-// lising the notes 
 
-const listNotes = ()=>{
-	console.log(chalk.green("Your notes"));
-	const notes = lodeNotes()
-	//console.log(notes);
-	notes.forEach((note)=>console.log(note.title))
-}
 
 //exporting getnotes and addNote function
 
 module.exports = {
-	getNotes : getNotes,
 	addNote : addNote,
 	removeNote : removeNote,
-	listNotes : listNotes
+	listNotes : listNotes,
+	readNote :readNote
 }

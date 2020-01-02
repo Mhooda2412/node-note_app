@@ -50,7 +50,14 @@ yargs.command({
 yargs.command({
 	command:"read",
 	describe:"read a note",
-	handler:()=>console.log("content of the  note")
+	builder:{
+		title:{
+			describe:"title of node to be removed",
+			demandOption:true,
+			type:'string'
+		}
+	},
+	handler:(argv)=>Notes.readNote(argv.title)
 })
 
 //calling yargs 
